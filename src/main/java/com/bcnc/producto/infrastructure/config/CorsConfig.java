@@ -1,4 +1,4 @@
-package com.bcnc.producto.config;
+package com.bcnc.producto.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

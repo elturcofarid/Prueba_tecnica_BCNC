@@ -72,3 +72,8 @@ cd Prueba_tecnica_BCNC
 # Ejecutar la aplicación
 ./mvnw spring-boot:run
 
+
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=Prueba-BCNC2 \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=sqp_d734e25350968beb4627d211e314bf132b147694

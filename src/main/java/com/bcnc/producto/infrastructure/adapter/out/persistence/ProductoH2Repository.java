@@ -1,15 +1,12 @@
-package com.bcnc.producto.producto.infrastructure.repository;
+package com.bcnc.producto.infrastructure.adapter.out.persistence;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bcnc.producto.producto.infrastructure.persistence.ProductoEntity;
-
 @Repository
-public interface H2ProductoRepository extends JpaRepository<ProductoEntity, Long> {
+public interface ProductoH2Repository extends JpaRepository<ProductoEntity, Long> {
 
     List<ProductoEntity> findByProductIdAndBrandIdAndStartDateBeforeAndEndDateAfterOrderByPriorityDesc(
         Long productId, 
