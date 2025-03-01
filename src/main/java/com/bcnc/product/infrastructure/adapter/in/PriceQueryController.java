@@ -1,10 +1,9 @@
-package com.bcnc.producto.infrastructure.adapter.in;
+package com.bcnc.product.infrastructure.adapter.in;
 
 import org.springframework.web.bind.annotation.*;
-
-import com.bcnc.producto.application.dto.ProductResponseDTO;
-import com.bcnc.producto.application.port.in.ProductService;
-import com.bcnc.producto.domain.model.Product;
+import com.bcnc.product.application.dto.ProductResponseDTO;
+import com.bcnc.product.application.port.in.ProductService;
+import com.bcnc.product.domain.model.PriceQuery;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
@@ -28,7 +27,7 @@ public class PriceQueryController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH.mm");
             LocalDateTime localTime = LocalDateTime.parse(time, formatter);
             
-            Product product = productService.queryPrice(localTime, idProduct, idBrand);
+            PriceQuery product = productService.queryPrice(localTime, idProduct, idBrand);
             return ResponseEntity.ok(mapToDTO(product));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -36,7 +35,7 @@ public class PriceQueryController {
     }
 
 
-    private ProductResponseDTO mapToDTO(Product product) {
+    private ProductResponseDTO mapToDTO(PriceQuery product) {
         ProductResponseDTO dto = new ProductResponseDTO();
         dto.setPrice(product.getPrice());
         dto.setProductId(product.getIdProduct());

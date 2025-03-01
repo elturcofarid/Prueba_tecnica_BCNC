@@ -2,9 +2,9 @@ package com.bcnc.product.infrastructure.adapter.out.persistence;
 
 import java.time.LocalDateTime;
 import org.springframework.stereotype.Component;
-
+import com.bcnc.product.application.exception.ProductNotFoundException;
 import com.bcnc.product.application.port.out.ProductRepository;
-import com.bcnc.product.domain.model.Product;
+import com.bcnc.product.domain.model.PriceQuery;
 
 @Component
 public class ProductH2Adapter implements ProductRepository {
@@ -18,15 +18,21 @@ public class ProductH2Adapter implements ProductRepository {
     }
 
     @Override
-    public Product queryPrice(LocalDateTime time, Long idProduct, Integer idBrand) {
-
-        ProductEntity prod = repository.findByProductIdAndBrandIdAndStartDateBeforeAndEndDateAfterOrderByPriorityDesc(
+    public PriceQuery queryPrice(LocalDateTime time, Long idProduct, Integer idBrand) {
+        var products = repository.findByProductIdAndBrandIdAndStartDateBeforeAndEndDateAfterOrderByPriorityDesc(
             idProduct, 
             idBrand, 
             time,    
             time    
-        ).get(0);
+        );
         
-        return mapper.toDomain(prod);
+        if (products.isEmpty()) {
+            throw new ProductNotFoundException(
+                String.format("No price found for product %d and brand %d at time %s", 
+                    idProduct, idBrand, time)
+            );
+        }
+        
+        return mapper.toDomain(products.get(0));
     }
 }

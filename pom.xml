@@ -10,9 +10,9 @@
         <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bcnc</groupId>
-    <artifactId>producto</artifactId>
+    <artifactId>product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>producto</name>
+    <name>product</name>
     <description>Artefacto servicio producto </description>
     <url/>
     <licenses>

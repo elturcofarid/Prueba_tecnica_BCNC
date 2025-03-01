@@ -10,9 +10,8 @@ public interface ProductH2Repository extends JpaRepository<ProductEntity, Long> 
 
     List<ProductEntity> findByProductIdAndBrandIdAndStartDateBeforeAndEndDateAfterOrderByPriorityDesc(
         Long productId, 
-        int brandId, 
-        LocalDateTime startDateParam, 
-        LocalDateTime endDateParam
+        Integer brandId, 
+        LocalDateTime startDate,
+        LocalDateTime endDate
     );
-
 }

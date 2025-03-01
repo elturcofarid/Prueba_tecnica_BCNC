@@ -1,4 +1,4 @@
-package com.bcnc.producto.infrastructure.adapter.out.persistence;
+package com.bcnc.product.infrastructure.adapter.out.persistence;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "PRICE")
-public class ProductoEntity {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,6 @@ public class ProductoEntity {
 
     @Column(name = "CURR")
     private String currency;
-
 
 
 }

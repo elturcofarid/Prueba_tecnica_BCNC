@@ -1,8 +1,8 @@
-package com.bcnc.producto.application.port.out;
+package com.bcnc.product.application.port.out;
 
 import java.time.LocalDateTime;
-import com.bcnc.producto.domain.model.Product;
+import com.bcnc.product.domain.model.PriceQuery;
 
 public interface ProductRepository {
-    Product queryPrice(LocalDateTime time, Long productId, Integer brandId);
+    PriceQuery queryPrice(LocalDateTime time, Long productId, Integer brandId);
 }

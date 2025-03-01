@@ -2,31 +2,31 @@ package com.bcnc.product.infrastructure.adapter.out.persistence;
 
 import org.springframework.stereotype.Component;
 
-import com.bcnc.product.domain.model.Product;
+import com.bcnc.product.domain.model.PriceQuery;
 
 
 @Component
 public class ProductMapper {
 
-    public  Product toDomain(ProductEntity entity) {
+    public  PriceQuery toDomain(ProductEntity entity) {
         if (entity == null) {
             return null;
         }
 
-        Product producto = new Product();
-        producto.setIdBrand(entity.getBrandId());
-        producto.setStartDate(entity.getStartDate());
-        producto.setEndDate(entity.getEndDate());
-        producto.setPriceList(entity.getPriceList());
-        producto.setIdProduct(entity.getProductId());
-        producto.setPriority(entity.getPriority());
-        producto.setPrice(entity.getPrice());
-        producto.setCurr(entity.getCurrency());
+        PriceQuery product = new PriceQuery();
+        product.setIdBrand(entity.getBrandId());
+        product.setStartDate(entity.getStartDate());
+        product.setEndDate(entity.getEndDate());
+        product.setPriceList(entity.getPriceList());
+        product.setIdProduct(entity.getProductId());
+        product.setPriority(entity.getPriority());
+        product.setPrice(entity.getPrice());
+        product.setCurr(entity.getCurrency());
 
-        return producto;
+        return product;
     }
 
-    public  ProductEntity toEntity(Product domain) {
+    public  ProductEntity toEntity(PriceQuery domain) {
         if (domain == null) {
             return null;
         }

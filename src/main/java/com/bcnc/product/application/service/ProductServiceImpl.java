@@ -2,10 +2,9 @@ package com.bcnc.product.application.service;
 
 import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
-
 import com.bcnc.product.application.port.in.ProductService;
 import com.bcnc.product.application.port.out.ProductRepository;
-import com.bcnc.product.domain.model.Product;
+import com.bcnc.product.domain.model.PriceQuery;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product queryPrice(LocalDateTime time, Long productId, Integer brandId) {
+    public PriceQuery queryPrice(LocalDateTime time, Long productId, Integer brandId) {
         return productRepository.queryPrice(time, productId, brandId);
     }
 }
