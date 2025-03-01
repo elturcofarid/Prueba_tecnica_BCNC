@@ -57,5 +57,50 @@ class HexagonalArchitectureTest {
             .check(classes);
     }
 
+    @Test
+    void namingConventionsShouldBeRespected() {
+        // Controllers should end with "Controller"
+        classes()
+            .that().resideInAPackage("..adapter.in.rest..")
+            .and().areNotAnnotatedWith(Test.class)
+            .should().haveSimpleNameEndingWith("Controller")
+            .check(classes);
 
+        // Repositories should end with "Repository"
+        classes()
+            .that().resideInAPackage("..adapter.out.persistence..")
+            .and().areNotAnnotatedWith(Test.class)
+            .should().haveSimpleNameEndingWith("Repository")
+            .check(classes);
+
+        // Use cases should end with "UseCase"
+        classes()
+            .that().resideInAPackage("..application.port.in..")
+            .and().areInterfaces()
+            .should().haveSimpleNameEndingWith("UseCase")
+            .check(classes);
+
+        // Port implementations should end with "Adapter"
+        classes()
+            .that().resideInAPackage("..adapter.out..")
+            .and().areNotInterfaces()
+            .and().areNotAnnotatedWith(Test.class)
+            .should().haveSimpleNameEndingWith("Adapter")
+            .check(classes);
+
+        // Service implementations should end with "Service"
+        classes()
+            .that().resideInAPackage("..application.service..")
+            .and().areNotInterfaces()
+            .should().haveSimpleNameEndingWith("Service")
+            .check(classes);
+
+        // Domain models should not have technical suffixes
+        classes()
+            .that().resideInAPackage("..domain.model..")
+            .should().haveSimpleNameNotEndingWith("Model")
+            .andShould().haveSimpleNameNotEndingWith("Entity")
+            .andShould().haveSimpleNameNotEndingWith("DTO")
+            .check(classes);
+    }
 }

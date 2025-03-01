@@ -1,13 +1,13 @@
-package  com.bcnc.producto.application.dto;
+package  com.bcnc.product.application.dto;
 
 import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class ProductoResponseDTO {
-    private BigDecimal precio;
+public class ProductResponseDTO {
+    private BigDecimal price;
     private Long productId;
     private Integer brandId;
     private Integer priceList;
-    private String fechaAplicacion;
+    private String dateAplication;
 }
